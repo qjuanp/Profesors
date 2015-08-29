@@ -1,3 +1,2 @@
-var academicUnits = require("./discoverAcademicUnits");
-
-academicUnits("http://www.uniandes.edu.co/institucional/facultades/facultades");
+var profesorDiscovery = require("./profesors-crawler");
+profesorDiscovery("http://sistemas.uniandes.edu.co/");
