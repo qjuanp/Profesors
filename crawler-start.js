@@ -1,2 +1,3 @@
 var profesorDiscovery = require("./lib/crawlers/profesors");
-profesorDiscovery("http://sistemas.uniandes.edu.co/");
+var url = process.argv[2];
+profesorDiscovery(url? url : "http://sistemas.uniandes.edu.co/");
