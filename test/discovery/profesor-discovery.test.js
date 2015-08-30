@@ -13,12 +13,10 @@ describe("Profesor Discovery Data", function() {
 			}
 		};
 
-		console.log("mensaje test");
-
-		var profesor = new Profesor(queueItem)
+		var profesor = new Profesor(queueItem);
 
 		// When
-		var result = profesor.process();
+		var result = profesor.isAProfesorPage();
 
 		// Then
 		expect(result).to.be.equal(true);
@@ -35,12 +33,10 @@ describe("Profesor Discovery Data", function() {
 			}
 		};
 
-		console.log("mensaje test");
-
-		var profesor = new Profesor(queueItem)
+		var profesor = new Profesor(queueItem);
 
 		// When
-		var result = profesor.process();
+		var result = profesor.isAProfesorPage();
 
 		// Then
 		expect(result).to.be.equal(false);
