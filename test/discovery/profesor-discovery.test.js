@@ -1,5 +1,7 @@
-var expect = require("chai").expect;
-var Profesor = require("../../lib/discovery/profesor-discovery");
+var expect = require("chai").expect,
+	Profesor = require("../../lib/discovery/profesor-discovery"),
+	htmlData = require("../data/htmlData"),
+	cheerio = require("cheerio");
 
 describe("Profesor Discovery Data", function() {
 	it("should be user the url as profesor", function(){
@@ -40,5 +42,30 @@ describe("Profesor Discovery Data", function() {
 
 		// Then
 		expect(result).to.be.equal(false);
+	});
+
+	it("should be load html data",function(done){	
+		// Given
+		htmlData('profesors_visitantes', function(content){
+			expect(content).to.be.not.equal(undefined);
+			done();
+		});
+	});
+
+	it("should be extrat a Profesor from 'Sistemas' page", function(done){
+		// Given
+		htmlData('profesors_visitantes', function(content){
+			// Given
+			var rulesManager = require("../../../lib/discovery/rules/rulesManager"),
+				run = rulesManager(),
+				$ = cheerio.load(content),
+				queueItem = {
+					url: "https://sistemas.uniandes.edu.co/es/nuestra-gente/profesores-adminitrativos/vistantes"
+				};
+			
+			run($,queueItem,function($,queueItem,data){
+				expect(data).to.have.property("profesors");
+			});
+		});
 	});
 });
