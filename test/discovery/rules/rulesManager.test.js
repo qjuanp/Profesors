@@ -9,9 +9,8 @@ describe("Rules Manager Tests",function(){
 		rule(
 			{},
 			{url:'something'},
-			function($,queueItem,data){
+			function(data){
 				console.log("Result Data",data);
-				expect(queueItem).to.have.property('url','something');
 				expect(data).to.have.property('testModule');
 				expect(data).to.have.property('testAnotherModule');
 				done();

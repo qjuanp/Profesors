@@ -56,15 +56,14 @@ describe("Profesor Discovery Data", function() {
 		// Given
 		htmlData('profesors_visitantes', function(content){
 			// Given
-			var rulesManager = require("../../../lib/discovery/rules/rulesManager"),
+			var rulesManager = require("../../lib/discovery/rules/rulesManager"),
 				run = rulesManager(),
 				$ = cheerio.load(content),
 				queueItem = {
 					url: "https://sistemas.uniandes.edu.co/es/nuestra-gente/profesores-adminitrativos/vistantes"
 				};
-			
-			run($,queueItem,function($,queueItem,data){
-				expect(data).to.have.property("profesors");
+			run($,queueItem,function(data){
+				console.log("Profesor data", data);
 			});
 		});
 	});
